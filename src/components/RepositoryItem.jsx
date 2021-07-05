@@ -1,17 +1,29 @@
 import React from 'react';
-import { View } from 'react-native';
-import Text from './Text';
+import { View, StyleSheet } from 'react-native';
+import StatisticsContainer from './StatisticsContainer';
+import InfoContainer from './InfoContainer';
+
+const styles = StyleSheet.create({
+  repositoryContainer: {
+    backgroundColor: 'white',
+  },
+});
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View >
-      <Text>Full Name: {item.fullName}</Text>
-      <Text>Description: {item.description}</Text>
-      <Text>Language: {item.language}</Text>
-      <Text>Forks: {item.forksCount}</Text>
-      <Text>Stars: {item.stargazersCount}</Text>
-      <Text>Rating: {item.ratingAverage}</Text>
-      <Text>Reviews: {item.reviewCount}</Text>
+    <View style={styles.repositoryContainer}>
+      <InfoContainer
+        fullName={item.fullName}
+        description={item.description}
+        language={item.language}
+        avatarUrl={item.ownerAvatarUrl}
+      />
+      <StatisticsContainer
+        starCount={item.stargazersCount}
+        forksCount={item.forksCount}
+        reviewCount={item.reviewCount}
+        rating={item.ratingAverage}
+      />
     </View>
   );
 };

@@ -5,7 +5,7 @@ import theme from '../theme';
 
 const styles = StyleSheet.create({
   tab: {
-    marginRight: theme.fontSizes.subheading,
+    marginRight: theme.padding.medium,
   }
 });
 

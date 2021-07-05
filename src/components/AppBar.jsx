@@ -7,7 +7,7 @@ import theme from '../theme';
 const styles = StyleSheet.create({
   container: {
     marginTop: Constants.statusBarHeight,
-    padding: theme.fontSizes.subheading,
+    padding: theme.padding.medium,
     flexDirection: 'row',
     backgroundColor: theme.colors.appBar,
   }
