@@ -16,7 +16,7 @@ const AppBarTab = ({ text, url }) => {
     <Link
       to={url}
       component={Pressable}
-      style={styles.tab}
+      style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, styles.tab]}
     >
       <Subheading color="textLight">
         {text}
