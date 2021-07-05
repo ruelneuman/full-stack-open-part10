@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+
 import StatisticsContainer from './StatisticsContainer';
 import InfoContainer from './InfoContainer';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
   repositoryContainer: {
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.backgroundLight,
   },
 });
 

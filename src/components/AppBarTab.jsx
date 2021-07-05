@@ -7,7 +7,7 @@ import theme from '../theme';
 
 const styles = StyleSheet.create({
   tab: {
-    padding: theme.padding.medium,
+    padding: theme.spacing.medium,
   },
 });
 

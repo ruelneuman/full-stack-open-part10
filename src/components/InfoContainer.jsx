@@ -7,15 +7,15 @@ import theme from '../theme';
 const styles = StyleSheet.create({
   infoContainer: {
     flexDirection: 'row',
-    margin: theme.margin.medium,
+    margin: theme.spacing.medium,
   },
   avatarContainer: {
-    marginRight: theme.margin.medium,
+    marginRight: theme.spacing.medium,
   },
   avatar: {
     width: 40,
     height: 40,
-    borderRadius: 4,
+    borderRadius: theme.radius.medium,
   },
   language: {
     alignSelf: 'flex-start',

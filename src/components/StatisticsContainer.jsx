@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   statistics: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginBottom: theme.margin.medium,
+    marginBottom: theme.spacing.medium,
   },
 });
 

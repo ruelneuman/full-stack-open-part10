@@ -5,7 +5,6 @@ import Text from './Text';
 const styles = StyleSheet.create({
   statisticsItem: {
     alignItems: 'center',
-    margin: 1,
   },
 });
 

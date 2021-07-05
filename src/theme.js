@@ -6,6 +6,8 @@ const theme = {
     primary: '#0366d6',
     appBar: '#24292e',
     background: '#e1e4e8',
+    backgroundLight: '#ffffff',
+    details: '#586069',
   },
   fontSizes: {
     body: 14,
@@ -18,15 +20,15 @@ const theme = {
     normal: '400',
     bold: '700',
   },
-  padding: {
+  spacing: {
     small: 8,
     medium: 16,
     large: 24,
   },
-  margin: {
-    small: 8,
-    medium: 16,
-    large: 24,
+  radius: {
+    small: 2,
+    medium: 4,
+    large: 8,
   }
 };
 
