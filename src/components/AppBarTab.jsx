@@ -1,21 +1,27 @@
 import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import Text from './Text';
+import { Link } from "react-router-native";
+
+import Subheading from './Subheading';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
   tab: {
-    marginRight: theme.padding.medium,
-  }
+    padding: theme.padding.medium,
+  },
 });
 
-const AppBarTab = ({ text }) => {
+const AppBarTab = ({ text, url }) => {
   return (
-    <Pressable style={styles.tab}>
-      <Text color="textLight" fontWeight="bold" fontSize="subheading">
+    <Link
+      to={url}
+      component={Pressable}
+      style={styles.tab}
+    >
+      <Subheading color="textLight">
         {text}
-      </Text>
-    </Pressable>
+      </Subheading>
+    </Link>
   );
 };
 
