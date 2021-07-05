@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: theme.radius.medium,
   },
+  infoText: {
+    flex: 1,
+  },
   language: {
     alignSelf: 'flex-start',
     backgroundColor: theme.colors.primary,
@@ -37,7 +40,7 @@ const InfoContainer = ({ fullName, description, language, avatarUrl }) => {
           }}
         />
       </View>
-      <View>
+      <View style={styles.infoText}>
         <Subheading>{fullName}</Subheading>
         <Text color="textSecondary">{description}</Text>
         <Text color="textLight" style={styles.language}>{language}</Text>
