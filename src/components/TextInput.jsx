@@ -8,13 +8,19 @@ const styles = StyleSheet.create({
    borderWidth: 1,
    borderRadius: theme.radius.medium,
    padding: theme.spacing.small,
-   marginBottom: theme.spacing.medium,
+   marginTop: theme.spacing.medium,
  },
+ error: {
+   borderColor: theme.colors.error,
+ }
 });
 
-// eslint-disable-next-line no-unused-vars
 const TextInput = ({ style, error, ...props }) => {
-  const textInputStyle = [styles.textInput, style];
+  const textInputStyle = [
+    styles.textInput,
+    error && styles.error, 
+    style,
+  ];
 
   return <NativeTextInput style={textInputStyle} {...props} />;
 };

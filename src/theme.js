@@ -8,6 +8,7 @@ const theme = {
     background: '#e1e4e8',
     backgroundLight: '#ffffff',
     details: '#586069',
+    error: '#d73a4a',
   },
   fontSizes: {
     body: 14,
@@ -21,6 +22,7 @@ const theme = {
     bold: '700',
   },
   spacing: {
+    tiny: 4,
     small: 8,
     medium: 16,
     large: 24,

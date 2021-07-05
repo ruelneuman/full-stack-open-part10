@@ -1,4 +1,5 @@
 import React from 'react';
+import * as yup from 'yup';
 import { Formik } from 'formik';
 import { View, StyleSheet } from 'react-native';
 
@@ -12,7 +13,8 @@ const styles = StyleSheet.create({
   },
   form: {
     backgroundColor: theme.colors.backgroundLight,
-    padding: theme.spacing.medium,
+    paddingHorizontal: theme.spacing.medium,
+    paddingBottom: theme.spacing.medium,
   },
 });
 
@@ -21,11 +23,21 @@ const initialValues = {
   password: '',
 };
 
+const validationSchema = yup.object().shape({
+  username: yup
+    .string()
+    .required('Username is required'),
+  password: yup
+    .string()
+    .required('Password is required'),
+});
+
 const SignIn = () => {
   return (
     <View style={styles.container}>
       <Formik
         initialValues={initialValues}
+        validationSchema={validationSchema}
         onSubmit={(values) => console.log(values)}
       >
         {({ handleSubmit }) => (

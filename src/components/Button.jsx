@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     padding: theme.spacing.small,
     borderRadius: theme.radius.medium,
     alignItems: 'center',
+    marginTop: theme.spacing.medium,
   },
 });
 
