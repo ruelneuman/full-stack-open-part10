@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import StatisticsItem from './StatisticsItem';
-import theme from '../theme';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   statistics: {

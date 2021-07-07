@@ -2,8 +2,8 @@ import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import { Link } from "react-router-native";
 
-import Subheading from './Subheading';
-import theme from '../theme';
+import Subheading from '../Subheading';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   tab: {
