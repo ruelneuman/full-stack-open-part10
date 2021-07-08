@@ -7,6 +7,7 @@ import { useHistory } from "react-router-native";
 import useSignIn from '../hooks/useSignIn';
 import FormikTextInput from './FormikTextInput';
 import Button from './Button';
+import Text from './Text';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -18,6 +19,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: theme.spacing.medium,
     paddingBottom: theme.spacing.medium,
   },
+  errorText: {
+    color: theme.colors.error,
+    marginTop: theme.spacing.tiny,
+  }
 });
 
 const initialValues = {
@@ -35,7 +40,7 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-  const [signIn] = useSignIn();
+  const [signIn, { error }] = useSignIn();
   const history = useHistory();
 
   const onSubmit = async (values) => {
@@ -48,7 +53,7 @@ const SignIn = () => {
       console.log(error);
     }
   };
- 
+
   return (
     <View style={styles.container}>
       <Formik
@@ -61,6 +66,7 @@ const SignIn = () => {
             <FormikTextInput name="username" placeholder="Username" autoCapitalize="none" />
             <FormikTextInput name="password" placeholder="Password" secureTextEntry />
             <Button onPress={handleSubmit} title="Sign In" />
+            {error && <Text style={styles.errorText}>{error.message}</Text>}
           </View>
         )}
       </Formik>
