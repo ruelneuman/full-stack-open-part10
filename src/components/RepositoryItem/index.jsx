@@ -18,13 +18,13 @@ const RepositoryItem = ({ item }) => {
         fullName={item.fullName}
         description={item.description}
         language={item.language}
-        avatarUrl={item.ownerAvatarUrl}
+        ownerAvatarUrl={item.ownerAvatarUrl}
       />
       <StatisticsContainer
-        starCount={item.stargazersCount}
+        stargazersCount={item.stargazersCount}
         forksCount={item.forksCount}
         reviewCount={item.reviewCount}
-        rating={item.ratingAverage}
+        ratingAverage={item.ratingAverage}
       />
     </View>
   );

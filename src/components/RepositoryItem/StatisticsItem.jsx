@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { parseStatistics } from '../../utils/helpers';
 import Text from '../Text';
 
 const styles = StyleSheet.create({
@@ -8,17 +9,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const StatisticsItem = ({ statistic, description }) => {
-  const round = (number) => {
-    return Math.round(number * 10) / 10;
-  };
-
+const StatisticsItem = ({ statistic, description, ...props }) => {
   return (
-    <View style={styles.statisticsItem}>
+    <View style={styles.statisticsItem} {...props}>
       <Text fontWeight="bold">
-        {statistic < 1000
-          ? statistic
-          : round(statistic / 1000) + 'k'}
+        {parseStatistics(statistic)}
       </Text>
       <Text color="textSecondary">{description}</Text>
     </View>

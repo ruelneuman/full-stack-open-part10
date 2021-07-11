@@ -11,24 +11,28 @@ const styles = StyleSheet.create({
   },
 });
 
-const StatisticsContainer = ({ starCount, reviewCount, forksCount, rating }) => {
+const StatisticsContainer = ({ stargazersCount, reviewCount, forksCount, ratingAverage }) => {
   return (
     <View style={styles.statistics}>
       <StatisticsItem
-        statistic={starCount}
+        statistic={stargazersCount}
         description="Stars"
+        testID="stargazersCountStatsItem"
       />
       <StatisticsItem
         statistic={forksCount}
         description="Forks"
+        testID="forksCountStatsItem"
       />
       <StatisticsItem
         statistic={reviewCount}
         description="Reviews"
+        testID="reviewCountStatsItem"
       />
       <StatisticsItem
-        statistic={rating}
+        statistic={ratingAverage}
         description="Rating"
+        testID="ratingAverageStatsItem"
       />
     </View>
   );

@@ -29,21 +29,21 @@ const styles = StyleSheet.create({
   },
 });
 
-const InfoContainer = ({ fullName, description, language, avatarUrl }) => {
+const InfoContainer = ({ fullName, description, language, ownerAvatarUrl }) => {
   return (
     <View style={styles.infoContainer}>
       <View style={styles.avatarContainer}>
         <Image
           style={styles.avatar}
           source={{
-            uri: avatarUrl
+            uri: ownerAvatarUrl
           }}
         />
       </View>
       <View style={styles.infoText}>
-        <Subheading>{fullName}</Subheading>
-        <Text color="textSecondary">{description}</Text>
-        <Text color="textLight" style={styles.language}>{language}</Text>
+        <Subheading testID="fullName">{fullName}</Subheading>
+        <Text color="textSecondary" testID="description">{description}</Text>
+        <Text color="textLight" style={styles.language} testID="language">{language}</Text>
       </View>
     </View>
   );
