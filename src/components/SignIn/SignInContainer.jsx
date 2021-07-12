@@ -2,13 +2,11 @@ import React from 'react';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import { View, StyleSheet } from 'react-native';
-import { useHistory } from "react-router-native";
 
-import useSignIn from '../hooks/useSignIn';
-import FormikTextInput from './FormikTextInput';
-import Button from './Button';
-import Text from './Text';
-import theme from '../theme';
+import FormikTextInput from '../FormikTextInput';
+import Button from '../Button';
+import Text from '../Text';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,21 +37,7 @@ const validationSchema = yup.object().shape({
     .required('Password is required'),
 });
 
-const SignIn = () => {
-  const [signIn, { error }] = useSignIn();
-  const history = useHistory();
-
-  const onSubmit = async (values) => {
-    const { username, password } = values;
-
-    try {
-      await signIn({ username, password });
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+const SignInContainer = ({ onSubmit, error }) => {
   return (
     <View style={styles.container}>
       <Formik
@@ -63,9 +47,23 @@ const SignIn = () => {
       >
         {({ handleSubmit }) => (
           <View style={styles.form}>
-            <FormikTextInput name="username" placeholder="Username" autoCapitalize="none" />
-            <FormikTextInput name="password" placeholder="Password" secureTextEntry />
-            <Button onPress={handleSubmit} title="Sign In" />
+            <FormikTextInput
+              name="username"
+              placeholder="Username"
+              autoCapitalize="none"
+              testID="usernameField"
+            />
+            <FormikTextInput
+              name="password"
+              placeholder="Password"
+              secureTextEntry
+              testID="passwordField"
+            />
+            <Button
+              onPress={handleSubmit}
+              title="Sign In"
+              testID="submitButton"
+            />
             {error && <Text style={styles.errorText}>{error.message}</Text>}
           </View>
         )}
@@ -74,4 +72,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInContainer;
