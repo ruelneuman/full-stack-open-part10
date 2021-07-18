@@ -1,9 +1,16 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import RepositoryItem from '../RepositoryItem';
 import ItemSeparator from '../ItemSeperator';
 import ReviewItem from './ReviewItem';
+import theme from '../../theme';
+
+const styles = StyleSheet.create({
+  header: {
+    marginBottom: theme.spacing.small,
+  },
+});
 
 const SingleRepositoryContainer = ({ repository }) => {
   const reviews = repository?.reviews;
@@ -19,6 +26,7 @@ const SingleRepositoryContainer = ({ repository }) => {
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => <ReviewItem review={item} />}
       ListHeaderComponent={() => repository ? <RepositoryItem repository={repository} /> : null}
+      ListHeaderComponentStyle={styles.header}
     />
   );
 };
