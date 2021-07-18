@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Pressable } from 'react-native';
+import { Link } from 'react-router-native';
 import RepositoryItem from '../RepositoryItem';
 import ItemSeparator from './ItemSeperator';
 
@@ -14,7 +15,9 @@ const RepositoryListContainer = ({ repositories }) => {
       ItemSeparatorComponent={ItemSeparator}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <RepositoryItem item={item} />
+        <Link to={`/repository/${item.id}`} component={Pressable}>
+            <RepositoryItem repository={item} />
+        </Link>
       )}
     />
   );

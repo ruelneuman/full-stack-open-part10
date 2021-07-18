@@ -7,7 +7,7 @@ import theme from '../../theme';
 const styles = StyleSheet.create({
   infoContainer: {
     flexDirection: 'row',
-    margin: theme.spacing.medium,
+    marginHorizontal: theme.spacing.medium,
   },
   avatarContainer: {
     marginRight: theme.spacing.medium,
