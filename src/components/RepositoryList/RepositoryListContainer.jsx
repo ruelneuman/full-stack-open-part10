@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, Pressable } from 'react-native';
 import { Link } from 'react-router-native';
 import RepositoryItem from '../RepositoryItem';
-import ItemSeparator from './ItemSeperator';
+import ItemSeparator from '../ItemSeperator';
 
 const RepositoryListContainer = ({ repositories }) => {
   const repositoryNodes = repositories

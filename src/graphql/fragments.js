@@ -14,3 +14,16 @@ export const REPOSITORY_DATA = gql`
     url
   }
 `;
+
+export const REVIEW_DATA = gql`
+  fragment ReviewData on Review {
+    id
+    text
+    rating
+    createdAt
+    user {
+      id
+      username
+    }
+  }
+`;
