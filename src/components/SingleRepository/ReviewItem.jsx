@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import Text from '../Text';
 import Subheading from '../Subheading';
 import theme from '../../theme';
+import { parseDate } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
   reviewItemContainer: {
@@ -40,7 +41,7 @@ const ReviewItem = ({ review }) => {
       </View>
       <View style={styles.reviewTextContainer}>
         <Subheading>{review.user.username}</Subheading>
-        <Text color="textSecondary">{review.createdAt}</Text>
+        <Text color="textSecondary">{parseDate(review.createdAt)}</Text>
         <Text style={styles.review}>{review.text}</Text>
       </View>
     </View>
