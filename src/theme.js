@@ -37,7 +37,17 @@ const theme = {
     small: 2,
     medium: 4,
     large: 8,
-  }
+  },
+  iconSize: {
+    small: 20,
+    medium: 40,
+    large: 60,
+  },
+  borderWidth: {
+    small: 1,
+    medium: 2,
+    large: 3,
+  },
 };
 
 export default theme;

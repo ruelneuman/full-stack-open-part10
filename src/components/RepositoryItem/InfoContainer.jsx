@@ -13,19 +13,19 @@ const styles = StyleSheet.create({
     marginRight: theme.spacing.medium,
   },
   avatar: {
-    width: 40,
-    height: 40,
+    width: theme.iconSize.medium,
+    height: theme.iconSize.medium,
     borderRadius: theme.radius.medium,
   },
-  infoText: {
+  infoTextContainer: {
     flex: 1,
   },
   language: {
     alignSelf: 'flex-start',
     backgroundColor: theme.colors.primary,
-    padding: 4,
-    borderRadius: 4,
-    marginTop: 4,
+    padding: theme.spacing.tiny,
+    borderRadius: theme.radius.medium,
+    marginTop: theme.spacing.tiny,
   },
 });
 
@@ -40,7 +40,7 @@ const InfoContainer = ({ fullName, description, language, ownerAvatarUrl }) => {
           }}
         />
       </View>
-      <View style={styles.infoText}>
+      <View style={styles.infoTextContainer}>
         <Subheading testID="fullName">{fullName}</Subheading>
         <Text color="textSecondary" testID="description">{description}</Text>
         <Text color="textLight" style={styles.language} testID="language">{language}</Text>
