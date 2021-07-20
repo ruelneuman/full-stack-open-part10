@@ -15,7 +15,7 @@ const useSignIn = () => {
   
   const signIn = async ({ username, password }) => {
     const mutationResult = await mutate({
-      variables: { credentials: { username, password } },
+      variables: { username, password },
     });
 
     return mutationResult;

@@ -6,6 +6,7 @@ import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
 import SingleRepository from './SingleRepository';
 import SignIn from './SignIn';
+import SignUp from './SignUp';
 import AddReview from './AddReview';
 import theme from '../theme';
 
@@ -33,6 +34,9 @@ const Main = () => {
         </Route>
         <Route path="/sign-in" exact>
           <SignIn />
+        </Route>
+        <Route path="/sign-up" exact>
+          <SignUp />
         </Route>
         <Redirect to="/" />
       </Switch>

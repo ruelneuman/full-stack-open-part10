@@ -24,31 +24,29 @@ const styles = StyleSheet.create({
 });
 
 const initialValues = {
-  ownerName: '',
-  repositoryName: '',
-  rating: '',
-  text: '',
+  username: '',
+  password: '',
+  passwordConfirmation: '',
 };
 
 const validationSchema = Yup.object().shape({
-  ownerName: Yup
+  username: Yup
     .string()
-    .required('Repository owner name is required'),
-  repositoryName: Yup
+    .min(1, 'Username must be at least 1 character')
+    .max(30, 'Username must be 30 characters or less')
+    .required('Username is required'),
+  password: Yup
     .string()
-    .required('Repository name is required'),
-  rating: Yup
-    .number()
-    .typeError('Rating must be a number')
-    .integer('Rating must be an integer')
-    .min(0, 'Minimum rating is 0')
-    .max(100, 'Maximum rating is 100')
-    .required('Rating is required'),
-  text: Yup
+    .min(5, 'Password must be at least 5 characters')
+    .max(50, 'Password must be 50 characters or less')
+    .required('Password is required'),
+  passwordConfirmation: Yup
     .string()
+    .oneOf([Yup.ref('password')], 'Password confirmation must match password')
+    .required('Password confirmation is required'),
 });
 
-const AddReviewContainer = ({ onSubmit, error }) => {
+const SignUpContainer = ({ onSubmit, error }) => {
   return (
     <View style={styles.container}>
       <Formik
@@ -59,29 +57,24 @@ const AddReviewContainer = ({ onSubmit, error }) => {
         {({ handleSubmit }) => (
           <View style={styles.form}>
             <FormikTextInput
-              name="ownerName"
-              placeholder="Repository owner name"
+              name="username"
+              placeholder="Username"
               autoCapitalize="none"
             />
             <FormikTextInput
-              name="repositoryName"
-              placeholder="Repository name"
-              autoCapitalize="none"
+              name="password"
+              placeholder="Password"
+              secureTextEntry
             />
             <FormikTextInput
-              name="rating"
-              placeholder="Rating between 0 and 100"
-              autoCapitalize="none"
-              keyboardType="numeric"
-            />
-            <FormikTextInput
-              name="text"
-              placeholder="Review"
-              multiline
+              name="passwordConfirmation"
+              placeholder="Password confirmation"
+              secureTextEntry
             />
             <Button
               onPress={handleSubmit}
-              title="Add a Review"
+              title="Sign Up"
+              testID="submitButton"
             />
             {error && <Text style={styles.errorText}>{error.message}</Text>}
           </View>
@@ -91,4 +84,4 @@ const AddReviewContainer = ({ onSubmit, error }) => {
   );
 };
 
-export default AddReviewContainer;
+export default SignUpContainer;

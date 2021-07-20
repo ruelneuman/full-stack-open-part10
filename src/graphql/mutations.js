@@ -3,19 +3,40 @@ import { gql } from '@apollo/client';
 import { REVIEW_DATA } from './fragments';
 
 export const AUTHORIZE = gql`
-  mutation Authorize($credentials: AuthorizeInput!) {
-    authorize(credentials: $credentials) {
+  mutation Authorize($username: String!, $password: String!) {
+    authorize(credentials: { username: $username, password: $password }) {
       accessToken
     }
   }
 `;
 
 export const CREATE_REVIEW = gql`
-  mutation CreateReview($review: CreateReviewInput!) {
-    createReview(review: $review) {
+  mutation CreateReview(
+    $ownerName: String!
+    $repositoryName: String!
+    $rating: Int!
+    $text: String
+    ) {
+    createReview(
+      review: {
+      ownerName: $ownerName
+      repositoryName: $repositoryName
+      rating: $rating
+      text: $text
+      }
+    ) {
       repositoryId
       ...ReviewData
     }
   }
   ${REVIEW_DATA}
+`;
+
+export const CREATE_USER = gql`
+  mutation CreateUser($username: String!, $password: String!) {
+    createUser(user: { username: $username, password: $password }) {
+      id
+      username
+    }
+  }
 `;

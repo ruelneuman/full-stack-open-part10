@@ -1,5 +1,5 @@
 import React from 'react';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { View, StyleSheet } from 'react-native';
 
@@ -28,11 +28,11 @@ const initialValues = {
   password: '',
 };
 
-const validationSchema = yup.object().shape({
-  username: yup
+const validationSchema = Yup.object().shape({
+  username: Yup
     .string()
     .required('Username is required'),
-  password: yup
+  password: Yup
     .string()
     .required('Password is required'),
 });

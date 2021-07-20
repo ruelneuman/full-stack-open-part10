@@ -25,7 +25,7 @@ const AppBar = () => {
   });
 
   const authorizedUser = data?.authorizedUser;
-  
+
   const signOut = async () => {
     await authStorage.removeAccessToken();
     await client.resetStore();
@@ -36,10 +36,9 @@ const AppBar = () => {
       <ScrollView horizontal>
         <AppBarTab text="Repositories" url="/" />
         {authorizedUser && <AppBarTab text="Add a Review" url="/add-review" />}
-        {authorizedUser
-          ? <AppBarTab text="Sign Out" url="/sign-out" onPress={signOut}/>
-          : <AppBarTab text="Sign In" url="/sign-in" />
-        }
+        {authorizedUser && <AppBarTab text="Sign Out" url="/sign-out" onPress={signOut} />}
+        {!authorizedUser && <AppBarTab text="Sign In" url="/sign-in" />}
+        {!authorizedUser && <AppBarTab text="Sign Up" url="/sign-up" />}
       </ScrollView>
     </View>
   );
