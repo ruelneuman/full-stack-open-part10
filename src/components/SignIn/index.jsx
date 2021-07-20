@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from "react-router-native";
+import { useHistory } from 'react-router-native';
 
 import useSignIn from '../../hooks/useSignIn';
 import SignInContainer from './SignInContainer';
@@ -10,7 +10,7 @@ const SignIn = () => {
 
   const onSubmit = async (values) => {
     const { username, password } = values;
-
+    
     try {
       await signIn({ username, password });
       history.push('/');

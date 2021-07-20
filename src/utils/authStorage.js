@@ -11,7 +11,7 @@ class AuthStorage {
   }
 
   async setAccessToken(accessToken) {
-    await AsyncStorage.setItem(this.tokenKey, accessToken,);
+    await AsyncStorage.setItem(this.tokenKey, accessToken);
   }
 
   async removeAccessToken() {
