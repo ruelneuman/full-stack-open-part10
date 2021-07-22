@@ -15,8 +15,12 @@ const RepositoryListContainer = ({ repositories }) => {
       ItemSeparatorComponent={ItemSeparator}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <Link to={`/repository/${item.id}`} component={Pressable}>
-            <RepositoryItem repository={item} />
+        <Link
+          style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+          to={`/repository/${item.id}`}
+          component={Pressable}
+        >
+          <RepositoryItem repository={item} />
         </Link>
       )}
     />
