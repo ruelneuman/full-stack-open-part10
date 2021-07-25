@@ -2,40 +2,56 @@ import { useQuery } from '@apollo/client';
 
 import { GET_REPOSITORIES } from '../graphql/queries';
 
-const useRepositories = ({ orderBy, orderDirection, searchKeyword }) => {
+const useRepositories = (variables) => {
 
-  const { data, error, loading, refetch } = useQuery(GET_REPOSITORIES, {
+  const { data, error, loading, refetch, fetchMore, ...result } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
-    variables: { orderBy, orderDirection, searchKeyword },
+    variables,
   });
 
-  const repositories = data?.repositories;
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
 
-  return { repositories, error, loading, refetch };
+    if (!canFetchMore) {
+      return;
+    }
+
+    fetchMore({
+      variables: {
+        after: data.repositories.pageInfo.endCursor,
+        ...variables,
+      },
+    });
+  };
+
+  return {
+    repositories: data?.repositories,
+    error,
+    loading,
+    fetchMore: handleFetchMore,
+    refetch,
+    ...result,
+  };
 };
 
-export const getUseRepositoryOptions = (sortType, searchKeyword) => {
+export const getSortVariables = (sortType) => {
   switch (sortType) {
     case 'most-recent':
       return {
         orderBy: 'CREATED_AT',
-        orderDirection: 'DESC',
-        searchKeyword,
       };
     case 'highest-rated':
       return {
         orderBy: 'RATING_AVERAGE',
         orderDirection: 'DESC',
-        searchKeyword,
       };
     case 'lowest-rated':
       return {
         orderBy: 'RATING_AVERAGE',
         orderDirection: 'ASC',
-        searchKeyword,
       };
     default:
-      return { searchKeyword };
+      return {};
   }
 };
 
