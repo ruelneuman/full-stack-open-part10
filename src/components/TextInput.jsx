@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
    borderRadius: theme.radius.medium,
    padding: theme.spacing.small,
    marginTop: theme.spacing.medium,
+   backgroundColor: theme.colors.backgroundLight
  },
  error: {
    borderColor: theme.colors.error,

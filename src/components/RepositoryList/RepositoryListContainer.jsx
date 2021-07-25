@@ -4,19 +4,35 @@ import { Link } from 'react-router-native';
 
 import RepositoryItem from '../RepositoryItem';
 import ItemSeparator from '../ItemSeperator';
-import SortingPicker from './SortingPicker';
+import Header from './Header';
 
-const RepositoryListContainer = ({ repositories, sortType, setSortType }) => {
-  const repositoryNodes = repositories
+export class RepositoryListContainer extends React.Component {
+  renderHeader = () => {
+    const { sortType, setSortType, searchKeyword, setSearchKeyword } = this.props;
+
+    return (
+      <Header
+        sortType={sortType}
+        setSortType={setSortType}
+        searchKeyword={searchKeyword}
+        setSearchKeyword={setSearchKeyword}
+      />
+    );
+  };
+
+  render() {
+    const { repositories } = this.props;
+
+    const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
-
-  return (
-    <FlatList
+    
+    return (
+      <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       keyExtractor={(item) => item.id}
-      ListHeaderComponent={() => <SortingPicker sortType={sortType} setSortType={setSortType} />}
+      ListHeaderComponent={this.renderHeader}
       renderItem={({ item }) => (
         <Link
           style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
@@ -27,7 +43,8 @@ const RepositoryListContainer = ({ repositories, sortType, setSortType }) => {
         </Link>
       )}
     />
-  );
-};
+    );
+  }
+}
 
 export default RepositoryListContainer;
