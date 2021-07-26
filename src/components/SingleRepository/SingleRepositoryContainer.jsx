@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SingleRepositoryContainer = ({ repository }) => {
+const SingleRepositoryContainer = ({ repository, onEndReached }) => {
   const reviews = repository?.reviews;
 
   const reviewNodes = reviews
@@ -24,9 +24,11 @@ const SingleRepositoryContainer = ({ repository }) => {
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      onEndReached={onEndReached}
+      onEndReachedThreshold={0.5}
       ListHeaderComponent={() => repository ? <RepositoryItem repository={repository} showLink /> : null}
       ListHeaderComponentStyle={styles.header}
+      renderItem={({ item }) => <ReviewItem review={item} />}
     />
   );
 };

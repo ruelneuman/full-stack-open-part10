@@ -28,8 +28,8 @@ const useRepositories = (variables) => {
     repositories: data?.repositories,
     error,
     loading,
-    fetchMore: handleFetchMore,
     refetch,
+    fetchMore: handleFetchMore,
     ...result,
   };
 };
