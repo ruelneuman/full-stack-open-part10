@@ -4,7 +4,8 @@ import { FlatList } from 'react-native';
 import ItemSeparator from '../ItemSeperator';
 import ReviewItem from '../ReviewItem';
 
-const UserReviewListContainer = ({ user, onEndReached }) => {
+const UserReviewListContainer = ({ user, onEndReached, handleDelete }) => {
+ 
   const reviews = user?.reviews;
 
   const reviewNodes = reviews
@@ -18,7 +19,7 @@ const UserReviewListContainer = ({ user, onEndReached }) => {
       keyExtractor={(item) => item.id}
       onEndReached={onEndReached}
       onEndReachedThreshold={0.5}
-      renderItem={({ item }) => <ReviewItem review={item} showRepository={true} />}
+      renderItem={({ item }) => <ReviewItem review={item} repositoryAsTitle={true} showReviewActions={true} handleDelete={handleDelete} />}
     />
   );
 };

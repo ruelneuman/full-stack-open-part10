@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Link } from 'react-router-native';
 
 import Text from '../Text';
 import Subheading from '../Subheading';
+import Button from '../Button';
 import theme from '../../theme';
 import { parseDate } from '../../utils/helpers';
 
 const styles = StyleSheet.create({
   reviewItemContainer: {
     backgroundColor: theme.colors.backgroundLight,
-    flexDirection: 'row',
     padding: theme.spacing.medium,
+  },
+  reviewDataContainer: {
+    flexDirection: 'row',
   },
   ratingContainer: {
     marginRight: theme.spacing.medium,
@@ -30,24 +34,50 @@ const styles = StyleSheet.create({
   },
   review: {
     marginTop: theme.spacing.small,
-  }
+  },
+  ButtonContainer: {
+    flexDirection: 'row',
+  },
+  ViewButton: {
+    flex: 1,
+    marginRight: theme.spacing.medium,
+  },
+  DeleteButton: {
+    flex: 1,
+    backgroundColor: theme.colors.urgent,
+  },
 });
 
-const ReviewItem = ({ review, showRepository }) => {
+const ReviewItem = ({ review, repositoryAsTitle, showReviewActions, handleDelete }) => {
   const showReviewText = Boolean(review.text);
 
   return (
     <View style={styles.reviewItemContainer}>
-      <View style={styles.ratingContainer}>
-        <Subheading style={styles.rating}>{review.rating}</Subheading>
+      <View style={styles.reviewDataContainer}>
+        <View style={styles.ratingContainer}>
+          <Subheading style={styles.rating}>{review.rating}</Subheading>
+        </View>
+        <View style={styles.reviewTextContainer}>
+          {repositoryAsTitle
+            ? <Subheading>{review.repository.fullName}</Subheading>
+            : <Subheading>{review.user.username}</Subheading>}
+          <Text color="textSecondary">{parseDate(review.createdAt)}</Text>
+          {showReviewText && <Text style={styles.review}>{review.text}</Text>}
+        </View>
       </View>
-      <View style={styles.reviewTextContainer}>
-        {showRepository
-          ? <Subheading>{review.repository.fullName}</Subheading>
-          : <Subheading>{review.user.username}</Subheading>}
-        <Text color="textSecondary">{parseDate(review.createdAt)}</Text>
-        {showReviewText && <Text style={styles.review}>{review.text}</Text>}
-      </View>
+      {showReviewActions && <View style={styles.ButtonContainer}>
+        <Link
+          style={styles.ViewButton}
+          component={Button}
+          title="View Repository"
+          to={`/repository/${review.repository.id}`}
+        />
+        <Button
+          style={styles.DeleteButton}
+          title="Delete Review"
+          onPress={handleDelete(review.id)}
+        />
+      </View>}
     </View>
   );
 };

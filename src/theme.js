@@ -11,6 +11,7 @@ const theme = {
     backgroundLight: '#ffffff',
     details: '#586069',
     error: '#d73a4a',
+    urgent: '#d73a4a',
   },
   fontSizes: {
     body: 14,
