@@ -1,10 +1,31 @@
 import React, { useState } from 'react';
-import useRepositories, { getSortVariables } from '../../hooks/useRepositories';
+import useRepositories from '../../hooks/useRepositories';
 import RepositoryListContainer from './RepositoryListContainer';
 
 const RepositoryList = () => {
   const [sortType, setSortType] = useState('most-recent');
   const [searchKeyword, setSearchKeyword] = useState('');
+
+  const getSortVariables = (sortType) => {
+    switch (sortType) {
+      case 'most-recent':
+        return {
+          orderBy: 'CREATED_AT',
+        };
+      case 'highest-rated':
+        return {
+          orderBy: 'RATING_AVERAGE',
+          orderDirection: 'DESC',
+        };
+      case 'lowest-rated':
+        return {
+          orderBy: 'RATING_AVERAGE',
+          orderDirection: 'ASC',
+        };
+      default:
+        return {};
+    }
+  };
 
   const variables = { searchKeyword, first: 20, ...getSortVariables(sortType) };
 

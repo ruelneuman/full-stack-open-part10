@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from 'react-native';
 
 import RepositoryItem from '../RepositoryItem';
 import ItemSeparator from '../ItemSeperator';
-import ReviewItem from './ReviewItem';
+import ReviewItem from '../ReviewItem';
 import theme from '../../theme';
 
 const styles = StyleSheet.create({

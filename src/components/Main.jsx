@@ -8,6 +8,7 @@ import SingleRepository from './SingleRepository';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import AddReview from './AddReview';
+import UserReviewList from './UserReviewList';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -31,6 +32,9 @@ const Main = () => {
         </Route>
         <Route path="/add-review" exact>
           <AddReview />
+        </Route>
+        <Route path="/my-reviews" exact>
+          <UserReviewList />
         </Route>
         <Route path="/sign-in" exact>
           <SignIn />

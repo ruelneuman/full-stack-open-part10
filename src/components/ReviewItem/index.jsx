@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, showRepository }) => {
   const showReviewText = Boolean(review.text);
 
   return (
@@ -42,7 +42,9 @@ const ReviewItem = ({ review }) => {
         <Subheading style={styles.rating}>{review.rating}</Subheading>
       </View>
       <View style={styles.reviewTextContainer}>
-        <Subheading>{review.user.username}</Subheading>
+        {showRepository
+          ? <Subheading>{review.repository.fullName}</Subheading>
+          : <Subheading>{review.user.username}</Subheading>}
         <Text color="textSecondary">{parseDate(review.createdAt)}</Text>
         {showReviewText && <Text style={styles.review}>{review.text}</Text>}
       </View>

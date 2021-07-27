@@ -34,25 +34,4 @@ const useRepositories = (variables) => {
   };
 };
 
-export const getSortVariables = (sortType) => {
-  switch (sortType) {
-    case 'most-recent':
-      return {
-        orderBy: 'CREATED_AT',
-      };
-    case 'highest-rated':
-      return {
-        orderBy: 'RATING_AVERAGE',
-        orderDirection: 'DESC',
-      };
-    case 'lowest-rated':
-      return {
-        orderBy: 'RATING_AVERAGE',
-        orderDirection: 'ASC',
-      };
-    default:
-      return {};
-  }
-};
-
 export default useRepositories;
